@@ -1,0 +1,27 @@
+
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+ <!--{% if forms.errors %}
+ <p>Your username and password didn't match. Please try again/.</p>
+ {% endif %}-->
+ <div class='card'>
+ 	
+ <form method='POST' action="/users/login/">
+ 	{% csrf_token %}
+ 	<div class='message'>
+ 	{% for message in messages %}
+ 		{{message}}<br>
+ 	{% endfor %}	
+ 	</div>
+ 	<input type="text" name="username" placeholder="Username" class="input-fields"><br>
+ 	<input type="password" name="password" placeholder="Password" class="input-fields"><br>
+ 	<input type="submit" name="submit"><br>
+ </form>
+ 
+ 
+ <div id="create-account">
+ 	Don't have an account?&nbspCreate one&nbsp<a href="/users/register/" class='link here'>here</a>&nbsp
+ </div>
+</div>
+{% endblock content%}

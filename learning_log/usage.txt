@@ -1,0 +1,3 @@
+source ll_env/bin/activate
+
+python3 manage.py runserver

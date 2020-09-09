@@ -1,0 +1,33 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+ <div class='topics-card'>
+ 	<div id="topics-headline">My Topics</div>
+<div class="main-card">  <div class="topics"><ul>
+    {% for topic in topics %}
+      <li>
+      	<div class="topic">
+      		<div class="topic-link"><a href="/topics/{{topic.id}}" class="link">{{topic}}</a></div>
+      		<hr>
+      		<div class="topic-misc">
+      			<div class="topic-date">{{topic.date_added|date:'M d, Y H:i' }}</div>
+      		    <div class="delete-topic"><a href='/delete_topic/{{topic.id}}' class="link">Delete Topic?</a></div>
+      		    <div class="edit-topic"><a href="/edit_topic/{{topic.id}}" class="link">Edit Topic?</a></div>
+      		</div>
+      		</div>
+      	</li>	
+      		{% empty %}
+      
+      	
+      	<div class="no-topic">No topics have been added yet</div>
+      
+      
+     {% endfor %} 
+   </ul></div>
+   <div ><a href="/new_topic2" class="link new-link">Add a new Topic</a></div>
+</div>
+<hr class="visible-sm">
+<div class="quote">Keep Learning,<br> Keep Growing!</div>
+ </div>
+ 
+{% endblock content%}

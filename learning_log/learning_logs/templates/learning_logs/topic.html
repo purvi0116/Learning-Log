@@ -1,0 +1,29 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+ <div class="entries">My entries for topic: {{ topic}}</div>
+ <div class="entries-card">
+   
+      {% for entry in entries %}
+         <div class="entry-card">
+          
+           <div class="entry-date">{{ entry.date_added|date:'M d, Y H:i' }}</div>
+           <div class="entry-side">
+            <div class="edit-entry"><a href="/edit_entry/{{entry.id}}/" class="link">Edit</a></div>
+            <div class="delete-entry"><a href="/delete_entry/{{entry.id}}/" class="link">Delete</a></div></div>
+           <hr>
+           <div class="entry">{{ entry.text|linebreaks }}</div>
+         
+          
+         </div>
+
+      {% empty %}
+         <div class="entry-card no-entry">
+            There are no entries for this topic yet.
+         </div>
+      {% endfor %} 
+   
+
+</div>
+<a href="/new_entry/{{topic.id}}/" class="link new-link">Add a new entry for {{topic}}</a>
+{% endblock content%}

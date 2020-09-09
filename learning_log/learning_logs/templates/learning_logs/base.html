@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learning Log</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
+</head>
+<body>
+	
+	<div class="nav-bar">
+
+		<div class="logo"><a href="/" class='link nav-links left'>Learning Log</a></div>
+		
+		<!--{{user.is_authenticated}}-->
+
+		{% if user.is_authenticated %}
+		<a href="/users/logout/" class='link nav-links right no-dropdown'>log out</a>
+		<a href="/topics/" class='link nav-links right'>Topics</a>
+		<span class='greet-user right'>Hello, {{ user.first_name }}</span>
+
+		{% elif not user.is_authenticated %}
+		<a href="/users/login/" class='link nav-links right no-dropdown'>log in</a>
+		<a href="/users/register/" class='link nav-links right no-dropdown'>Register</a>
+		{% endif %}
+		<ul class="dropdown">
+			{% if user.is_authenticated %}
+			<li><a href="/users/logout/" class='link nav-links right'>log out</a></li>
+			<li><span class='greet-user right'>Hello, {{ user.first_name }}</span></li>
+
+			{% elif not user.is_authenticated %}
+			<li><a href="/users/login/" class='link nav-links right'>log in</a></li>
+			<li><a href="/users/register/" class='link nav-links right'>Register</a></li>
+			{% endif %}
+		</ul>
+		<hr class="hr">
+	</div>
+
+	
+	{% block content %} {% endblock content %}
+</body>
+</html>
+
+
