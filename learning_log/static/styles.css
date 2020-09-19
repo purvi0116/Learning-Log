@@ -26,6 +26,17 @@ body{
 
 }
 
+.card-2{
+	background-color: #838383;
+	margin: auto;
+	width:50%;
+	margin-top: 2%;
+	height:480px;
+	border-radius: 5px;
+
+
+}
+
 
 .hr{
 	border:2px solid lightcoral;
@@ -435,4 +446,9 @@ input[type=submit]:hover{
 	background-color: lightgreen;
 	height: 100vh;
 }
+}
+
+
+.home-page {
+	font-size:0.5em;
 }
